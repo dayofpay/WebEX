@@ -1,0 +1,15 @@
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\WebEX.exe.config
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\WebEX.exe
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\WebEX.pdb
+C:\Users\VCompany\source\repos\WebEX\WebEX\obj\Debug\WebEX.csprojAssemblyReference.cache
+C:\Users\VCompany\source\repos\WebEX\WebEX\obj\Debug\WebEX.csproj.CoreCompileInputs.cache
+C:\Users\VCompany\source\repos\WebEX\WebEX\obj\Debug\WebEX.exe
+C:\Users\VCompany\source\repos\WebEX\WebEX\obj\Debug\WebEX.pdb
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\HtmlAgilityPack.NetCore.dll
+C:\Users\VCompany\source\repos\WebEX\WebEX\obj\Debug\WebEX.csproj.CopyComplete
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.Bson.dll
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.dll
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.xml
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.Bson.pdb
+C:\Users\VCompany\source\repos\WebEX\WebEX\bin\Debug\Newtonsoft.Json.Bson.xml
