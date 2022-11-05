@@ -13,7 +13,7 @@ namespace WebEX.LocalActions
             Properties.Settings.Default.apiKey = newKey;
             Properties.Settings.Default.Save();
             Console.WriteLine($"[{DateTime.Now.ToString()}] API-Key Changed !");
-            Console.WriteLine($"[${DateTime.Now.ToString()}] NEW API-Key : {newKey}");
+            Console.WriteLine($"[{DateTime.Now.ToString()}] NEW API-Key : {newKey}");
         }
     }
 }

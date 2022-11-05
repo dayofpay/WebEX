@@ -25,7 +25,20 @@ namespace WebEX
                 {
                     if(args[0] == LocalData.Commands.commands[0]) // Lookup
                     {
-                        API.resolveDomain.Lookup(args[1]);
+                        try
+                        {
+                            if(args[0] == "lookup" && args.Length == 3)
+                            {
+                                API.resolveDomain.Lookup(args[1],false);
+                            }
+                            else
+                            {
+                                API.resolveDomain.Lookup(args[1],true);
+                            }
+                        }catch(Exception error)
+                        {
+
+                        }
                     }
                 }
             }

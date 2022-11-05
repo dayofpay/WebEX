@@ -25,7 +25,7 @@ namespace WebEX.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("63b657771a674859a86e5a85cf5a8fcc")]
+        [global::System.Configuration.DefaultSettingValueAttribute("31153fa2eef24d7b88bb7977a89faf0d")]
         public string apiKey {
             get {
                 return ((string)(this["apiKey"]));

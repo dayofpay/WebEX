@@ -54,6 +54,9 @@ namespace WebEX.Operations.StartOperations
                 Console.Write("> ");
                 var getCommand = Console.ReadLine();
                 var cmd = getCommand.Split(' ');
+                //CMD[0] = COMMAND
+                //CMD[1] = ARGUMENT
+                //CMD[2] = STATE
                 if (LocalData.Commands.commands.Contains(cmd[0]))
                 {
                     if (cmd[0] == "showCommands()")
@@ -75,16 +78,30 @@ namespace WebEX.Operations.StartOperations
                     {
                         Program.Main(new string[] { "--resetSoftware" });
                     }
-                    else if (cmd[0] == "lookup")
+
+                    else if (cmd[0] == "lookup" && cmd.Length == 3)
                     {
-                        try
+                        if(cmd[2] == "--noDomainData")
                         {
-                            API.resolveDomain.Lookup(cmd[1]);
+                            try
+                            {
+                                API.resolveDomain.Lookup(cmd[1], false);
+                            }
+                            catch (Exception noCommandInput)
+                            {
+                                Modules.Actions.CreateError($"There was an error while trying to execute command {cmd[0]}, please try again\r\n ERROR: ${noCommandInput.Message}");
+                            }
                         }
-                        catch (Exception noCommandInput)
-                        {
-                            Modules.Actions.CreateError($"There was an error while trying to execute command {cmd[0]}, please try again\r\n ERROR: ${noCommandInput.Message}");
-                        }
+                    }
+                    else if (cmd[0] == "lookup" && cmd.Length == 2) { 
+                            try
+                            {
+                                API.resolveDomain.Lookup(cmd[1], true);
+                            }
+                            catch (Exception noCommandInput)
+                            {
+                                Modules.Actions.CreateError($"There was an error while trying to execute command {cmd[0]}, please try again\r\n ERROR: ${noCommandInput.Message}");
+                            }
                     }
                     else if (cmd[0] == "setApi")
                     {
@@ -150,6 +167,7 @@ namespace WebEX.Operations.StartOperations
                         }
                     }
                 }
+
                 else
                 {
                     Modules.Actions.CreateError("Invalid Command !\r\nType showCommands() to see avaliable commands:");

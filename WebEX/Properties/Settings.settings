@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="apiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">63b657771a674859a86e5a85cf5a8fcc</Value>
+      <Value Profile="(Default)">31153fa2eef24d7b88bb7977a89faf0d</Value>
     </Setting>
     <Setting Name="startAnimation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
