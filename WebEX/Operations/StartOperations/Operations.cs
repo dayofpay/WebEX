@@ -10,7 +10,7 @@ namespace WebEX.Operations.StartOperations
     {
         public static void displayText()
         {
-            if(Properties.Settings.Default.startAnimation == true)
+            if (Properties.Settings.Default.startAnimation == true)
             {
                 for (int i = 0; i <= 3; i++)
                 {
@@ -38,12 +38,12 @@ namespace WebEX.Operations.StartOperations
 ░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗  ░░░██║░░░╚█████╔╝
 ░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝  ░░░╚═╝░░░░╚════╝░
 
-░██╗░░░░░░░██╗███████╗██████╗░███████╗██╗░░██╗  ░░███╗░░░░░░█████╗░
-░██║░░██╗░░██║██╔════╝██╔══██╗██╔════╝╚██╗██╔╝  ░████║░░░░░██╔══██╗
-░╚██╗████╗██╔╝█████╗░░██████╦╝█████╗░░░╚███╔╝░  ██╔██║░░░░░██║░░██║
-░░████╔═████║░██╔══╝░░██╔══██╗██╔══╝░░░██╔██╗░  ╚═╝██║░░░░░██║░░██║
-░░╚██╔╝░╚██╔╝░███████╗██████╦╝███████╗██╔╝╚██╗  ███████╗██╗╚█████╔╝
-░░░╚═╝░░░╚═╝░░╚══════╝╚═════╝░╚══════╝╚═╝░░╚═╝  ╚══════╝╚═╝░╚════╝░");
+░██╗░░░░░░░██╗███████╗██████╗░███████╗██╗░░██╗  ░░███╗░░░░░░░███╗░░
+░██║░░██╗░░██║██╔════╝██╔══██╗██╔════╝╚██╗██╔╝  ░████║░░░░░░████║░░
+░╚██╗████╗██╔╝█████╗░░██████╦╝█████╗░░░╚███╔╝░  ██╔██║░░░░░██╔██║░░
+░░████╔═████║░██╔══╝░░██╔══██╗██╔══╝░░░██╔██╗░  ╚═╝██║░░░░░╚═╝██║░░
+░░╚██╔╝░╚██╔╝░███████╗██████╦╝███████╗██╔╝╚██╗  ███████╗██╗███████╗
+░░░╚═╝░░░╚═╝░░╚══════╝╚═════╝░╚══════╝╚═╝░░╚═╝  ╚══════╝╚═╝╚══════╝");
                     Thread.Sleep(1250);
                     Console.Clear();
                 }
@@ -56,7 +56,18 @@ namespace WebEX.Operations.StartOperations
                 var cmd = getCommand.Split(' ');
                 if (LocalData.Commands.commands.Contains(cmd[0]))
                 {
-                    if (cmd[0] == "exit()")
+                    if (cmd[0] == "showCommands()")
+                    {
+                        foreach (string command in LocalData.Commands.commands)
+                        {
+                            Modules.Actions.CreateInfo("Command : " + command);
+                        }
+                    }
+                    else if (cmd[0] == "cls()")
+                    {
+                        Modules.Actions.ClearConsole();
+                    }
+                    else if (cmd[0] == "exit()")
                     {
                         break;
                     }
@@ -64,58 +75,84 @@ namespace WebEX.Operations.StartOperations
                     {
                         Program.Main(new string[] { "--resetSoftware" });
                     }
-                    else if(cmd[0] == "lookup")
+                    else if (cmd[0] == "lookup")
                     {
-                        API.resolveDomain.Lookup(cmd[1]);
+                        try
+                        {
+                            API.resolveDomain.Lookup(cmd[1]);
+                        }
+                        catch (Exception noCommandInput)
+                        {
+                            Modules.Actions.CreateError($"There was an error while trying to execute command {cmd[0]}, please try again\r\n ERROR: ${noCommandInput.Message}");
+                        }
                     }
-                    else if(cmd[0] == "setApi")
+                    else if (cmd[0] == "setApi")
                     {
-                        LocalActions.setApiKey.Set(cmd[1]);
+                        try
+                        {
+                            LocalActions.setApiKey.Set(cmd[1]);
+                        }
+                        catch (Exception noApiKey)
+                        {
+                            Modules.Actions.CreateError("Please, insert valid API Key");
+                        }
                     }
-                    else if(cmd[0] == "setProperty")
+                    else if (cmd[0] == "setProperty")
                     {
-                        if (LocalData.Commands.args.Contains(cmd[1])){
-                            if (cmd[1] == "debugData")
+                        try
+                        {
+                            if (LocalData.Commands.args.Contains(cmd[1]))
                             {
-                                if (cmd[2] == "--disable")
+                                if (cmd[1] == "debugData")
                                 {
-                                    Properties.Settings.Default.debugData = false;
-                                    Properties.Settings.Default.Save();
-                                    Modules.Actions.CreateInfo("Succesfully disabled debug data");
+                                    if (cmd[2] == "--disable")
+                                    {
+                                        Properties.Settings.Default.debugData = false;
+                                        Properties.Settings.Default.Save();
+                                        Modules.Actions.CreateInfo("Succesfully disabled debug data");
+                                    }
+                                    else if (cmd[2] == "--enable")
+                                    {
+                                        Properties.Settings.Default.debugData = true;
+                                        Properties.Settings.Default.Save();
+                                        Modules.Actions.CreateInfo("Succesfully enabled debug data");
+                                    }
                                 }
-                                else if (cmd[2] == "--enable")
+                                else if (cmd[1] == "startAnimation")
                                 {
-                                    Properties.Settings.Default.debugData = true;
-                                    Properties.Settings.Default.Save();
-                                    Modules.Actions.CreateInfo("Succesfully enabled debug data");
+                                    if (cmd[2] == "--disable")
+                                    {
+                                        Properties.Settings.Default.startAnimation = false;
+                                        Properties.Settings.Default.Save();
+                                        Modules.Actions.CreateInfo("Succesfully disabled Startup animations");
+                                    }
+                                    else if (cmd[2] == "--enable")
+                                    {
+                                        Properties.Settings.Default.startAnimation = true;
+                                        Properties.Settings.Default.Save();
+                                        Modules.Actions.CreateInfo("Succesfully enabled Startup animations");
+                                    }
                                 }
                             }
-                            else if(cmd[1] == "startAnimation")
+                            else
                             {
-                                if (cmd[2] == "--disable")
-                                {
-                                    Properties.Settings.Default.startAnimation = false;
-                                    Properties.Settings.Default.Save();
-                                    Modules.Actions.CreateInfo("Succesfully disabled Startup animations");
-                                }
-                                else if (cmd[2] == "--enable")
-                                {
-                                    Properties.Settings.Default.startAnimation = true;
-                                    Properties.Settings.Default.Save();
-                                    Modules.Actions.CreateInfo("Succesfully enabled Startup animations");
-                                }
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Modules.Actions.CreateError("Invalid Argument !");
                             }
                         }
-                        else
+                        catch (Exception invalidProperty)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Modules.Actions.CreateError("Invalid Argument !");
+                            Modules.Actions.CreateError("Invalid Property Name !\r\nList Of All Property Names:");
+                            foreach (string property in LocalData.Commands.args)
+                            {
+                                Modules.Actions.CreateInfo("Property : " + property);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    Modules.Actions.CreateError("Invalid Command !");
+                    Modules.Actions.CreateError("Invalid Command !\r\nType showCommands() to see avaliable commands:");
                 }
             }
         }

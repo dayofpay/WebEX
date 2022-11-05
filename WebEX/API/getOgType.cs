@@ -20,6 +20,7 @@ namespace WebEX.API
                 {
                     string content = node.GetAttributeValue("content", "");
                     Console.WriteLine("Website Type > " + content);
+                    Modules.Actions.CreateBlankLines(2);
                 }
             }
             catch (Exception noData)

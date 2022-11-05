@@ -20,6 +20,7 @@ namespace WebEX.API
                 {
                     string content = node.GetAttributeValue("content", "");
                     Console.WriteLine("OG:Title > " + content);
+                    Modules.Actions.CreateBlankLines(2);
                 }
             }
             catch (Exception noData)

@@ -18,6 +18,10 @@ namespace WebEX.Modules
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
         }
+        public static void ClearConsole()
+        {
+            Console.Clear();
+        }
         public static void CreateBlankLines(int count)
         {
             for (int i = 0; i <= count; i++)

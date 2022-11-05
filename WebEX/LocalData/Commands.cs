@@ -8,7 +8,7 @@ namespace WebEX.LocalData
 {
     class Commands
     {
-        public static String[] commands = { "lookup","exit()","setApi","setProperty","reset()" };
+        public static String[] commands = { "lookup","exit()","setApi","setProperty","reset()","cls()","showCommands()" };
         public static String[] args = { "startAnimation","debugData" };
     }
 }

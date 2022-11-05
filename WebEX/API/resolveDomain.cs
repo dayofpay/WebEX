@@ -45,22 +45,28 @@ namespace WebEX.API
                 getCharset.Get(responseFromServer);
                 if (responseFromServer.Contains("bootstrap"))
                 {
+                    Modules.Actions.CreateBlankLines(2);
                     Modules.Actions.CreateInfo("[!] Found Bootstrap");
+                    Modules.Actions.CreateBlankLines(2);
                 }
                 if (responseFromServer.Contains("https://www.googletagmanager.com/gtag/js"))
                 {
                     Modules.Actions.CreateInfo("[!] Found Google Analytics");
+                    Modules.Actions.CreateBlankLines(2);
                 }
                 if (!responseFromServer.Contains("<noscript>"))
                 {
                     Modules.Actions.CreateInfo("[!] <noscript> tag not found, if you are the owner of the website we suggest you to use this tag !");
+                    Modules.Actions.CreateBlankLines(2);
                 }
                 else if (responseFromServer.Contains("<noscript>"))
                 {
                     Modules.Actions.CreateInfo("[!] NoScript Tag Found !");
+                    Modules.Actions.CreateBlankLines(2);
                 }
                 Modules.Actions.CreateBlankLines(7);
                 Console.WriteLine("[ DOMAIN DATA ]");
+                Modules.Actions.CreateBlankLines(2);
                 domainData.getDomainData(domain);
             }
             catch (Exception error)

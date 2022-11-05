@@ -23,6 +23,7 @@ namespace WebEX.API
                     totalIcons++;
                 }
                 Console.WriteLine("Total Icons > " + totalIcons);
+                Modules.Actions.CreateBlankLines(2);
             }
             catch (Exception noData)
             {

@@ -10,7 +10,7 @@ namespace WebEX
     {
         public static void Main(string[] args)
         {
-            Console.Title = "WebEX | Coded by https://v-devs.online | dayofpay | V1.0";
+            Console.Title = "WebEX | Coded by https://v-devs.online | dayofpay | V1.1";
             if (args.Length <= 0)
             {
                 Operations.StartOperations.Operations.displayText();

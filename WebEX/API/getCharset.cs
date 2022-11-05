@@ -20,6 +20,7 @@ namespace WebEX.API
                 {
                     string content = node.GetAttributeValue("charset", "");
                     Console.WriteLine("Charset > " + content);
+                    Modules.Actions.CreateBlankLines(2);
                 }
             }
             catch (Exception noData)

@@ -23,6 +23,7 @@ namespace WebEX.API
                     cssFiles++;
                 }
                 Console.WriteLine("Total CSS Files > " + cssFiles);
+                Modules.Actions.CreateBlankLines(2);
             }
             catch (Exception noData)
             {
